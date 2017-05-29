@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Horoskop dla programistów</title>
+  </head>
+  <body>
+  
+  <H1>Tygodniowy horoskop dla programistów</H1>
+  <H2>Work in progress</H2>
+  
+  <span id="p1"></span>
+  <span id="p2"></span>
+  <span id="p3"></span>
+  <span id="p4"></span>
+  <span id="p5"></span>
+  <span id="p6"></span>
+  <span id="p7"></span>
+  <span id="p8"></span>
+  <span id="p9"></span>
+  <span id="p10"></span>
+  <span id="p11"></span>
+  <span id="p12"></span>
+  
+<a href="https://github.com/horoskop"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.3/seedrandom.min.js">
+</script>
+  
+  <script type="text/javascript">
+  
+  
+  var symbole = ["♈", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓"];
+  var znaki = ["Baran", "Byk", "Bliźnięta", "Rak", "Lew", "Panna", "Waga", "Skorpion", "Strzelec", "Koziorożec", "Wodnik", "Ryby"];
+  
+  var A1=["W bieżącym"];
+  var A2=[
+" tygodniu",
+" okresie",
+" projekcie",
+" branchu",
+  ];
+  var A3=[
+" uważaj na",
+" zwróć szczególną uwagę na",
+" nie ignoruj wskaźników mierzących"
+   ];
+  var A4=[
+" stabilność",
+" bezpieczeństwo",
+" skalowalność",
+" efektywność",
+" integralność",
+" wielodostęp",
+" transakcyjność",
+" rozproszenie",
+" kaskadowość",
+" load balancing",
+" branżowe standardy",
+" relacyjność",
+" ACL-e"
+  ];
+   var A5=[
+" GitHuba",
+" BitBucketa",
+" Amazona",
+" AWS-a",
+" CDN-ów",
+" Heroku",
+" Google Cloud"
+   ];
+   var A6=[
+", wpływ",
+", na szczęście wpływ",
+", niestety wpływ",
+", tym razem jednak ortogonalność",
+", fluktuacja"
+   ];
+   var A7=[
+" Saturna",
+" Jowisza",
+" Marsa",
+" promieniowania kosmicznego"
+   ];
+  var A8=[
+" może sprawić niespodzianki.",
+" zaskoczy.",
+" nie zrobi różnicy.",
+" pozytywnie zaskoczy."
+  ];
+  
+  var B1=[
+" Za połową tygodnia tygodnia",
+" Około połowy tygodnia",
+" Zrazu"
+  ];
+  var B2=[
+" możliwy",
+" niemal pewny",
+" prawdopodobny",
+" spodziewany"
+  ];
+  var B3=[
+" spadek",
+" wzrost",
+" nieznaczny spadek",
+" zdecydowany wzrost",
+" strzał"
+  ];
+  var B4=[
+" formy",
+" weny",
+" zaangażowania",
+" staranności"
+  ];
+  var B5=[
+", choć"
+  ];
+  var B6=[
+" commity",
+" checkiny",
+" tickety",
+" usterki",
+" konflikty branchy",
+" null-pointery"
+  ];
+  var B7=[
+" mogą drażnić.",
+" będą się kłębić.",
+" będą dominować."
+  ];
+  
+  var C1=[
+"W starym projekcie",
+"W nowym projekcie",
+"W poniedziałek",
+"We wtorek",
+"W środę",
+"W czwartek",
+"W piątek",
+"W kantynie",
+"W pobliżu gabinetu prezesa"
+  ];
+  var C2=[
+" coś się wydarzy!",
+" pojawi się długo oczekiwana wiadomość.",
+" spotkają cię małe nieprzyjemności, ale potem sytuacja się wyjaśni.",
+" nastąpi mały zamęt."
+  ];
+  var C3=[
+" Jeśli nie stracisz zimnej krwi, w końcu wszystko się uda.",
+" Trzymaj pod kontrolą budżet projektu!",
+" Jeśli klient zrobi ruch w kierunku drzwi, nie zatrzymuj go.",
+" Skorzystaj ze wskazówek swojej intuicji. To twój prawdziwy skarb.",
+" Może warto się w to włączyć?",
+" Dostaniesz propozycję ciekawszego zadania.",
+" Nadawaj więc bieg swoim sprawom i ciesz się życiem.",
+" Może to być czas sukcesów.",
+" Możesz mocniej przycisnąć gaz.",
+" Wykorzystaj ten etap na zastanowienie się, co naprawdę potrzebuje klient.",
+" To, co napędzało twój stres, okaże się nie takie znowu straszne.",
+" Pamiętaj, że lepiej przejść dwa kroki po dobrej drodze niż kilometr w złym kierunku.",
+" Niewykluczona jest okazja do krótkiej delegacji, ale także do osobistego rozwoju.",
+" Warto pamiętać, że szczęście lubi ludzi zaradnych.",
+" Duch rywalizacji nie pozwoli ci osiąść na laurach.",
+" Tajemnica sukcesu tkwi teraz w zręcznym postępowaniu. Nie bądź pasywny, a jednocześnie działaj delikatnie.",
+" Jasno określ swoje cele, a dzięki temu przyjdzie satysfakcja."
+  ];
+
+	var D1=[
+" Poprzestawaj z osobami kreatywnymi, z którymi możesz wspólnie zrealizować swoje plany.",
+" Zmień falę. Koniecznie!",
+" No i nie pozwól, by dopadł cię stres - jeśli możesz wyjedź gdzieś, skorzystaj z weekendu!",
+" Zabierz się wreszcie za realizację planów.",
+" Zmuś swoje szare komórki do aktywności, bo warto. To dobry moment na kurs, szkolenie.",
+" Twoja siła tkwi w sympatycznym sposobie bycia, umiejętności inteligentnej konwersacji.",
+" Zadbaj też o to, aby w planie dnia znalazło się codziennie miejsce na rozrywkę, wyjście do kina, spotkanie z przyjaciółmi.",
+" Może ci się wydawać, że twoja kariera niebezpiecznie zwolniła, ale to nie jest powód do niepokoju.",
+" Możesz także u progu kolejnego kwartału zaplanować kilkudniowy wypoczynek.",
+" Gdy wrócisz do codziennej pogoni za sukcesem, będziesz mądrzejszy o garść refleksji, silniejszy wewnętrznie i wypoczęty.",
+" Zespoły, które stanęły na rozdrożu, powinny zrobić uczciwy rachunek sumienia!",
+" W budżecie klienta, mimo bezsprzecznie sporych wydatków, ogólny plan wyjdzie na plus.",
+" Poznawaj ludzi, czytaj książki, zwiedzaj świat.",
+" Możesz zarazić innych swoim entuzjazmem, ale postaraj się zrozumieć cudzy punkt widzenia, niczego nie narzucaj."
+	];
+  
+  var E1=[
+"PROGRAMOWANIE: Uczyć się",
+"PROGRAMOWANIE: Spojrzeć przychylnym wzrokiem w stronę",
+"PROGRAMOWANIE: Poczytać nieco na temat"
+  ];
+  
+  var E2=[
+" LISP-a",
+" Ady",
+" COBOL-a",
+" Fortrana",
+" Prologa",
+" Haskella",
+" Erlanga",
+" ActionScripta",
+" Groovy-ego",
+" Clippera",
+" Smalltalka",
+" Ocamla",
+" PowerShella"
+  ];
+
+  var E3=[
+", może z powodzeniem zastąpić",
+", z pewnością uzupełni",
+", być może za jakiś czas zastąpi",
+", wkrótce popularnością przegoni"
+  ];
+  
+  var E4=[
+" Javę",
+" Javascript",
+" Objective-C",
+" C#",
+" Pythona",
+" C++",
+" PHP",
+" Perla",
+" Ruby'ego",
+" Swifta",
+" Matlaba",
+" Delphi",
+" PL/SQL",
+" Scalę"
+  ];
+  
+  var F1=[
+"TESTOWANIE: W tym tygodniu"
+	];
+
+  var F2=[
+" zdecydowanie",
+" być może",
+" zwyczajnie",
+" najzwyczajniej",
+" po prostu",
+" wyjątkowo",
+" jak zwykle"
+  ];
+  
+  var F3=[
+" zawiesić.",
+" zignorować.",
+" przystopować.",
+" zrzucić na klienta.",
+" pominąć."
+  ];
+
+  var G1=[
+"WYSIŁEK FIZYCZNY: W tym tygodniu lepiej zrezygnować."  
+  ];
+  
+  var BR=["<P>"];
+  
+  
+
+  function print(where, what){
+	document.getElementById(where).innerHTML += what;
+  }
+
+  function cut(source){
+	if (source.length == 1){
+		return source[0];
+	}
+	var x = Math.floor(Math.random()*(source.length));
+	var ret = source[x];
+	source.splice(x,1);
+	return ret;
+  }
+  
+  function cut0(source){
+	var ret = source[0];
+	source.splice(0,1);
+	return ret;
+  }
+  
+  function read(source){
+  	if (source.length == 1){
+		return source[0];
+	}
+	var x = Math.floor(Math.random()*(source.length));
+	var ret = source[x];
+	return ret;
+  }  
+  
+  var flow = [A1, A2, A3, A4, A5, A6, A7, A8, B1, B2, B3, B4, B5, B6, B7, BR, C1, C2, C3, D1, BR, E1, E2, E3, E4, BR, F1, F2, F3, BR, G1 ];
+  var removals = new Array(flow.length);
+  
+  function singleSign(where){
+  		var y = cut0(symbole);
+		var x = cut0(znaki);
+		print(where, y+" "+x+"<BR>");
+
+		var i = 0;
+		var txt = "";
+		flow.forEach(function(entry) {
+			if (removals[i]){
+			 txt += cut(entry);
+			} else {
+			 txt += read(entry);
+			}
+			
+			i++;
+		});
+		
+		print(where, txt+"<BR><HR>");
+  }
+  
+   function autorun()
+   {
+    var v = Math.floor(4000000000*Math.random());
+	Math.seedrandom(v);
+    var i = 0;
+    flow.forEach(function(entry) {
+		removals[i++] = entry.length >= 12;
+	});
+
+	for(var i=1; i<=12; i++){
+		singleSign("p"+i);
+	}
+	
+   }
+   if (window.addEventListener) window.addEventListener("load", autorun, false);
+   else if (window.attachEvent) window.attachEvent("onload", autorun);
+   else window.onload = autorun;
+  </script>
+  </body>
+</html>
