@@ -1,25 +1,86 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Horoskop dla programistów</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+ 
   </head>
   <body>
   
-  <H1>Tygodniowy horoskop dla programistów</H1>
-  <H2>Work in progress</H2>
+
   
-  <span id="p1"></span>
-  <span id="p2"></span>
-  <span id="p3"></span>
-  <span id="p4"></span>
-  <span id="p5"></span>
-  <span id="p6"></span>
-  <span id="p7"></span>
-  <span id="p8"></span>
-  <span id="p9"></span>
-  <span id="p10"></span>
-  <span id="p11"></span>
+
+
+    <div class="container">
+      <!-- Example row of columns -->
+	  
+	      <div class="row">
+        <div class="col-xs-12">
+		
+		  <div class="jumbotron">
+  <H1>Horoskop dla programistów</H1>
+ 
+
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default"><span aria-hidden="true">&larr;</span> Starszy</button>
+  <div class="btn-group" role="group">
+   <H5 id="data"> Work in progress </H5>
+  </div>
+  <button type="button" class="btn btn-default">Nowszy <span aria-hidden="true">&rarr;</span></button>
+</div>
+
+</div>
+
+
+
+		
+		</div>
+    </div>
+	  
+      <div class="row">
+        <div class="col-md-4" id="p1"></div>
+        <div class="col-md-4" id="p2"></div>
+        <div class="col-md-4" id="p3"></div>
+      </div>
+	  
+      <div class="row">
+        <div class="col-md-4" id="p4"></div>
+        <div class="col-md-4" id="p5"></div>
+        <div class="col-md-4" id="p6"></div>
+      </div>
+	  
+      <div class="row">
+        <div class="col-md-4" id="p7"></div>
+        <div class="col-md-4" id="p8"></div>
+        <div class="col-md-4" id="p9"></div>
+      </div>
+	  
+      <div class="row">
+        <div class="col-md-4" id="p10"></div>
+        <div class="col-md-4" id="p11"></div>
+        <div class="col-md-4" id="p12"></div>
+      </div>
+
+      <hr>
+
+    </div> <!-- /container -->	  
+
   <span id="p12"></span>
   
 <a href="https://github.com/horoskop"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>  
@@ -32,6 +93,7 @@
   
   var symbole = ["♈", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓"];
   var znaki = ["Baran", "Byk", "Bliźnięta", "Rak", "Lew", "Panna", "Waga", "Skorpion", "Strzelec", "Koziorożec", "Wodnik", "Ryby"];
+  var daty = ["21.03 – 19.04", "20.04 – 22.05", "23.05 – 21.06", "22.06 – 22.07", "23.07 – 23.08", "24.08 – 22.09", "23.09 – 22.10", "23.10 – 21.11", "22.11 – 21. 12", "22.12 – 19.01", "20.01 – 18. 02", "19.02 – 20.03"];
   
   var A1=["W bieżącym"];
   var A2=[
@@ -185,9 +247,11 @@
 	];
   
   var E1=[
-"PROGRAMOWANIE: Uczyć się",
-"PROGRAMOWANIE: Spojrzeć przychylnym wzrokiem w stronę",
-"PROGRAMOWANIE: Poczytać nieco na temat"
+"<b>PROGRAMOWANIE:</b> Uczyć się",
+"<b>PROGRAMOWANIE:</b> Spojrzeć przychylnym wzrokiem w stronę",
+"<b>PROGRAMOWANIE:</b> Poczytać nieco na temat",
+"<b>PROGRAMOWANIE:</b> Nie uciekać od",
+"<b>PROGRAMOWANIE:</b> Nie ignorować istnienia"
   ];
   
   var E2=[
@@ -231,7 +295,7 @@
   ];
   
   var F1=[
-"TESTOWANIE: W tym tygodniu"
+"<b>TESTOWANIE:</b> W tym tygodniu"
 	];
 
   var F2=[
@@ -253,7 +317,7 @@
   ];
 
   var G1=[
-"WYSIŁEK FIZYCZNY: W tym tygodniu lepiej zrezygnować."  
+"<b>WYSIŁEK FIZYCZNY:</b> W tym tygodniu lepiej zrezygnować."  
   ];
   
   var BR=["<P>"];
@@ -289,13 +353,14 @@
 	return ret;
   }  
   
-  var flow = [A1, A2, A3, A4, A5, A6, A7, A8, B1, B2, B3, B4, B5, B6, B7, BR, C1, C2, C3, D1, BR, E1, E2, E3, E4, BR, F1, F2, F3, BR, G1 ];
+  var flow = [BR, A1, A2, A3, A4, A5, A6, A7, A8, B1, B2, B3, B4, B5, B6, B7, BR, C1, C2, C3, D1, BR, E1, E2, E3, E4, BR, F1, F2, F3, BR, G1 ];
   var removals = new Array(flow.length);
   
   function singleSign(where){
   		var y = cut0(symbole);
 		var x = cut0(znaki);
-		print(where, y+" "+x+"<BR>");
+		var z = cut0(daty);
+		print(where, "<div class='page-header'><h2>"+y+" "+x+" <small>"+z+"</small></h2></div>");
 
 		var i = 0;
 		var txt = "";
@@ -309,10 +374,16 @@
 			i++;
 		});
 		
-		print(where, txt+"<BR><HR>");
+		print(where, txt);
   }
   
-   function autorun()
+  function getMonday(d) {
+	d = new Date(d);
+	var day = d.getDay(), diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+	return new Date(d.setDate(diff));
+  }
+  
+  function autorun()
    {
     var v = Math.floor(4000000000*Math.random());
 	Math.seedrandom(v);
@@ -324,6 +395,10 @@
 	for(var i=1; i<=12; i++){
 		singleSign("p"+i);
 	}
+	
+	//print("data", moment().format('L'));
+	
+
 	
    }
    if (window.addEventListener) window.addEventListener("load", autorun, false);
