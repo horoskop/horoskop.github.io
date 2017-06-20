@@ -106,9 +106,11 @@
   var D1, E1, E2, E3, E4, F1, F2, F3, G1;
 
   var BR=["<P>"];
-
-  date = new Date();  
+ 
+  var flow;
+  var removals;
   
+  // rebuild data sources before creating content again
   function resetContent(){
 	  
 	  symbole = ["♈", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓"];
@@ -344,20 +346,28 @@
 	  
 	  BR=["<P>"];
 	  
-	 flow = [BR, A1, A2, A3, A4, A5, A6, A7, A8, B1, B2, B3, B4, B5, B6, B7, BR, C1, C2, C3, D1, BR, E1, E2, E3, E4, BR, F1, F2, F3, BR, G1 ];
-	 removals = new Array(flow.length);
-
+	  // this is the schema of single zodiac sign entry creation, constant at the moment (modularization / randomization would be welcome)
+	  flow = [BR, A1, A2, A3, A4, A5, A6, A7, A8, B1, B2, B3, B4, B5, B6, B7, BR, C1, C2, C3, D1, BR, E1, E2, E3, E4, BR, F1, F2, F3, BR, G1 ];
 	  
+	  // if given table has 12+ entries, each entry can be used only once; otherwise they will be re-used
+	  removals = new Array(flow.length);
+      var i = 0;
+      flow.forEach(function(entry) {
+		removals[i++] = entry.length >= 12;
+	  });
   }
 
+  // print content to html container
   function print(where, what){
 	document.getElementById(where).innerHTML += what;
   }
 
+  // clear given container
   function clear(where){
 	document.getElementById(where).innerHTML = "";
   }
 
+  // return random element from array and remove it from array
   function cut(source){
 	if (source.length == 1){
 		return source[0];
@@ -368,12 +378,14 @@
 	return ret;
   }
   
+  // return first element of given array, removing it from array
   function cut0(source){
 	var ret = source[0];
 	source.splice(0,1);
 	return ret;
   }
   
+  // return random element from array
   function read(source){
   	if (source.length == 1){
 		return source[0];
@@ -383,9 +395,7 @@
 	return ret;
   }  
   
-  var flow;
-  var removals;
-  
+  // fill single zodiac sign entry into given container
   function singleSign(where){
   		var y = cut0(symbole);
 		var x = cut0(znaki);
@@ -408,12 +418,14 @@
 		print(where, txt);
   }
   
+  // get Monday for given date
   function getMonday(d) {
 	d = new Date(d);
 	var day = d.getDay(), diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
 	return new Date(d.setDate(diff));
   }
   
+  // format date as DD-MM-YYYY
   function formatDate(d){
   
 	var dd = d.getDate();
@@ -429,18 +441,16 @@
 	return dd+'-'+mm+'-'+yyyy;
   }
 
+  // helper function - add days to date
   Date.prototype.addDays = function(days) {
 	  var dat = new Date(this.valueOf());
 	  dat.setDate(dat.getDate() + days);
 	  return dat;
 	}
 
+	// generate whole content from scratch
   function refreshContent(){
     resetContent();
-    var i = 0;
-    flow.forEach(function(entry) {
-		removals[i++] = entry.length >= 12;
-	});
 
 	for(var i=1; i<=12; i++){
 		singleSign("p"+i);
@@ -452,22 +462,28 @@
 	print("data", formatDate(getMonday(monday))+" &ndash; "+formatDate(date2));
   }
   
-	String.prototype.hashCode = function() {
-		var hash = 0, i = 0, len = this.length;
-		while ( i < len ) {
-			hash  = ((hash << 5) - hash + this.charCodeAt(i++)) << 0;
-		}
-		return hash;
-	};
-	
+  // calculate string hash
+  String.prototype.hashCode = function() {
+	var hash = 0, i = 0, len = this.length;
+	while ( i < len ) {
+		hash  = ((hash << 5) - hash + this.charCodeAt(i++)) << 0;
+	}
+	return hash;
+  };
+ 	
+	// move current week back and forth, re-generate random seed, print content again
 	function change(offset){
 		monday = getMonday(monday.addDays(offset));
 		monday.setHours(0,0,0,0);
+		
+		// this hash will be constant per given week
 		hasz = formatDate(monday).hashCode();
 		Math.seedrandom(hasz);
+		
 		refreshContent();
 	}
 
+	
    function autorun()
    {
      change(0);
